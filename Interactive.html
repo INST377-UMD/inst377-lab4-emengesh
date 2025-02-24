@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INST377 - Lab 4 : Eden Mengesha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+            margin: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .section {
+            background-color: #673ab7;
+            color: white;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #4a1a9e;
+            border-radius: 5px;
+        }
+
+        .form-input {
+            margin: 10px 0;
+            padding: 5px;
+        }
+
+        button {
+            background-color: white;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #eee;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="pageHeading">INST377 - Lab 4 : Eden Mengesha</h1>
+    
+    <div class="container">
+        <!-- Alert Me Section -->
+        <div class="section">
+            <form id="alertForm" onsubmit="return false;">
+                <label for="name">Name: </label>
+                <input type="text" id="name" required class="form-input">
+                <button onclick="alertName()">Alert Me</button>
+            </form>
+        </div>
+
+        <!-- Change Color Section -->
+        <div class="section">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+        <!-- Text Tester Section -->
+        <div class="section">
+            <form id="textForm" onsubmit="return false;">
+                <label for="textTest">Text Tester: </label>
+                <input type="text" id="textTest" class="form-input">
+                <button onclick="validateText()">Validate Text</button>
+            </form>
+        </div>
+
+        <!-- Add Text Section -->
+        <div class="section">
+            <button onclick="addText()">Add Text</button>
+        </div>
+    </div>
+
+    <script>
+        // Alert Me Function
+        function alertName() {
+            const name = document.getElementById('name').value;
+            if (name) {
+                alert(`Hi ${name}!`);
+            }
+        }
+
+        // Change Color Function
+        let isBlue = true;
+        function changeColor() {
+            const body = document.body;
+            if (isBlue) {
+                body.style.backgroundColor = 'pink';
+            } else {
+                body.style.backgroundColor = 'grey';
+            }
+            isBlue = !isBlue;
+        }
+
+        // Text Validation Function
+        function validateText() {
+            const text = document.getElementById('textTest').value;
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            
+            if (validation.test(text)) {
+                alert('Special character detected!');
+            } else {
+                alert('No special characters found.');
+            }
+        }
+
+        // Add Text Function
+        function addText() {
+            const heading = document.getElementById('pageHeading');
+            heading.textContent += ' Add Text';
+        }
+    </script>
+</body>
+</html>
